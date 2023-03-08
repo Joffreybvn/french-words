@@ -57,6 +57,18 @@ validation = ["prance[osv] (>=0.11)"]
 yaml = ["PyYAML (>=3.10)"]
 
 [[package]]
+name = "appdata"
+version = "2.2.0"
+description = "Utils to manage application data folder."
+category = "main"
+optional = false
+python-versions = "*"
+files = [
+    {file = "appdata-2.2.0-py3-none-any.whl", hash = "sha256:ebe435a951c9a1be7d4853e42cfe3b10e3c65135f09350768b8a4abd2f90b22f"},
+    {file = "appdata-2.2.0.tar.gz", hash = "sha256:b51f3b1b63c397906fb18f5ba931ed3e1ee87397c0ffdbe01662c91cefb928e9"},
+]
+
+[[package]]
 name = "attrs"
 version = "22.2.0"
 description = "Classes Without Boilerplate"
@@ -1498,6 +1510,24 @@ files = [
 six = ">=1.5"
 
 [[package]]
+name = "python-slugify"
+version = "8.0.1"
+description = "A Python slugify application that also handles Unicode"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "python-slugify-8.0.1.tar.gz", hash = "sha256:ce0d46ddb668b3be82f4ed5e503dbc33dd815d83e2eb6824211310d3fb172a27"},
+    {file = "python_slugify-8.0.1-py2.py3-none-any.whl", hash = "sha256:70ca6ea68fe63ecc8fa4fcf00ae651fc8a5d02d93dcd12ae6d4fc7ca46c4d395"},
+]
+
+[package.dependencies]
+text-unidecode = ">=1.3"
+
+[package.extras]
+unidecode = ["Unidecode (>=1.1.1)"]
+
+[[package]]
 name = "pythonnet"
 version = "3.0.1"
 description = ".NET and Mono integration for Python"
@@ -1864,6 +1894,18 @@ typeguard = ">=2.10.0"
 build = ["black", "coverage", "coveralls", "flake8", "ipython", "isort (>=5.1,<6.0)", "mypy (==0.782)", "sphinx", "sphinx-autobuild", "sphinx-kr-theme", "twine"]
 
 [[package]]
+name = "text-unidecode"
+version = "1.3"
+description = "The most basic Text::Unidecode port"
+category = "main"
+optional = false
+python-versions = "*"
+files = [
+    {file = "text-unidecode-1.3.tar.gz", hash = "sha256:bad6603bb14d279193107714b288be206cac565dfa49aa5b105294dd5c4aab93"},
+    {file = "text_unidecode-1.3-py2.py3-none-any.whl", hash = "sha256:1311f10e8b895935241623731c2ba64f4c455287888b18189350b67134a822e8"},
+]
+
+[[package]]
 name = "typeguard"
 version = "2.13.3"
 description = "Run-time type checker for Python"
@@ -2031,4 +2073,4 @@ email = ["email-validator"]
 [metadata]
 lock-version = "2.0"
 python-versions = "3.11.*"
-content-hash = "48a3713c9e40038bb0ba94098195839213980b537677cab076ac218b031272a7"
+content-hash = "31466731cae68dfcf1608e023d4af01b1bfc41c9ee886419b655c33ecf9a4653"

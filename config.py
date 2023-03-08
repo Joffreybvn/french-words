@@ -1,4 +1,6 @@
 import os
+from slugify import slugify
+from appdata import AppDataPaths
 from flask_appbuilder.security.manager import (
     AUTH_OID,
     AUTH_REMOTE_USER,
@@ -7,13 +9,18 @@ from flask_appbuilder.security.manager import (
     AUTH_OAUTH,
 )
 
+APP_NAME = "French Learning Tool"
+
+app_data = AppDataPaths(slugify(APP_NAME))
+app_data.setup()
+
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 # Your App secret key
 SECRET_KEY = "\2\1thisismyscretkey\1\2\e\y\y\h"
 
 # The SQLAlchemy connection string.
-SQLALCHEMY_DATABASE_URI = "sqlite:///" + os.path.join(basedir, "app.db")
+SQLALCHEMY_DATABASE_URI = "sqlite:///" + os.path.join(app_data.app_data_path, "app.db")
 # SQLALCHEMY_DATABASE_URI = 'mysql://myapp@localhost/myapp'
 # SQLALCHEMY_DATABASE_URI = 'postgresql://root:password@localhost/myapp'
 
@@ -23,8 +30,6 @@ CSRF_ENABLED = True
 # ------------------------------
 # GLOBALS FOR APP Builder
 # ------------------------------
-# Uncomment to setup Your App name
-APP_NAME = "French Learning Tool"
 
 # Uncomment to setup Setup an App icon
 # APP_ICON = "static/img/logo.jpg"
@@ -43,7 +48,7 @@ AUTH_TYPE = AUTH_DB
 # AUTH_ROLE_ADMIN = 'Admin'
 
 # Uncomment to setup Public role name, no authentication needed
-AUTH_ROLE_PUBLIC = 'Admin'
+AUTH_ROLE_PUBLIC = "Admin"
 
 # Will allow user self registration
 AUTH_USER_REGISTRATION = False

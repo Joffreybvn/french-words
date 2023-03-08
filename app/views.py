@@ -2,7 +2,13 @@ import random
 from flask import render_template, url_for, flash, redirect, abort
 from flask_appbuilder.exceptions import FABException
 from flask_appbuilder.models.sqla.interface import SQLAInterface
-from flask_appbuilder import ModelView, ModelRestApi, expose, has_access, IndexView
+from flask_appbuilder import (
+    ModelView,
+    ModelRestApi,
+    expose,
+    has_access,
+    IndexView,
+)
 
 from . import appbuilder, db
 from .models import Word
@@ -12,24 +18,18 @@ from .widgets import RandomWidget
 class WordModelView(ModelView):
     datamodel = SQLAInterface(Word)
     label_columns = {
-        'title': 'Word',
-        'creation_date': 'Creation date',
-        'phonetic': "Phonetic",
-        'translation_es': "Spanish",
-        'translation_en': "English"
+        "title": "Word",
+        "creation_date": "Creation date",
+        "phonetic": "Phonetic",
+        "translation_es": "Spanish",
+        "translation_en": "English",
     }
-    list_columns = ['title', 'phonetic']
+    list_columns = ["title", "phonetic"]
     add_fieldsets = [
-        (
-            'Word',
-            {'fields': ['title', 'phonetic']}
-        ),
-        (
-            'Translations',
-            {'fields': ['translation_en', 'translation_es']}
-        ),
+        ("Word", {"fields": ["title", "phonetic"]}),
+        ("Translations", {"fields": ["translation_en", "translation_es"]}),
     ]
-    random_columns = ['title']
+    random_columns = ["title"]
 
     def _random(self):
         """
@@ -46,13 +46,15 @@ class WordModelView(ModelView):
             pk=item.id,
             label_columns=self.label_columns,
             include_columns=self.random_columns,
-            value_columns=self.datamodel.get_values_item(item, self.random_columns),
+            value_columns=self.datamodel.get_values_item(
+                item, self.random_columns
+            ),
             formatters_columns=self.formatters_columns,
             modelview_name=self.__class__.__name__,
         )
         self.update_redirect()
         return self._get_related_views_widgets(
-            item,  widgets={"random": widget}
+            item, widgets={"random": widget}
         )
 
     @expose("/random")
@@ -67,7 +69,7 @@ class WordModelView(ModelView):
         return self.render_template(
             template="appbuilder/general/model/random_word.html",
             title="Random word",
-            widgets=widgets
+            widgets=widgets,
         )
 
 
@@ -85,7 +87,7 @@ def page_not_found(e):
 
 
 db.create_all()
-db.event.listen(Word.title, 'set', Word.slugify, retval=False)
+db.event.listen(Word.title, "set", Word.slugify, retval=False)
 
 # Activate views
 
@@ -94,11 +96,11 @@ appbuilder.add_view(
     "Words list",
     icon="fa-list",
     category="Words",
-    category_icon="fa-w"
+    category_icon="fa-w",
 )
 appbuilder.add_link(
     "Random words",
     href="/wordmodelview/random",
     icon="fa-shuffle",
-    category="Words"
+    category="Words",
 )
