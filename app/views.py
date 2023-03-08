@@ -86,7 +86,7 @@ def page_not_found(e):
     )
 
 
-db.create_all()
+# db.create_all()
 db.event.listen(Word.title, "set", Word.slugify, retval=False)
 
 # Activate views
