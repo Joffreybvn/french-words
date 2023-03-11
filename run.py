@@ -1,5 +1,6 @@
 import sys
 import threading
+import subprocess
 import webview
 from app import app
 
@@ -9,6 +10,8 @@ def start_server():
 
 
 if __name__ == "__main__":
+    subprocess.run(["flask", "db", "upgrade"])
+
     thread = threading.Thread(target=start_server)
     thread.daemon = True
     thread.start()

@@ -27,3 +27,9 @@ flask db upgrade
 - Copy the `static/appbuilder` folder from the library into `app/static/appbuilder`.
 - Set `FAB_STATIC_FOLDER = basedir + "/app/static/appbuilder/"` in `conf.py`.
 - Modify the file `static/appbuilder/css/boostrap.min.css` directly.
+
+
+For windows:
+If having RuntimeError, re-install pywebview (with pip).
+Due to specific version of `clr-loader` and `pythonnet` being installed after pywebview.
+

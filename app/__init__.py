@@ -1,4 +1,5 @@
 import logging
+import appdata  # Windows: Keep unused import
 from flask import Flask
 from flask_appbuilder import AppBuilder, SQLA
 from flask_migrate import Migrate

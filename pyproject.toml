@@ -15,11 +15,14 @@ classifiers = [
 ]
 
 [tool.poetry.dependencies]
-python = "3.11.*"
+python = "3.10.*"
 flask-appbuilder = "^4.3.0"
 flask-migrate = "^4.0.4"
-pywebview = {git = "https://github.com/Joffreybvn/pywebview.git", branch = "feature/hide-menu-bar-when-no-menu", extras = ["qt"]}
-pygobject = "^3.42.2"  # QT binding for: Linux "libgl1-mesa-dev"
+pywebview = { git = "https://github.com/Joffreybvn/pywebview.git", branch = "feature/hide-menu-bar-when-no-menu", extras = ["qt"] }
+pygobject = { version = "^3.42.2", markers = "sys_platform == 'linux'" }  # QT binding for Linux ("libgl1-mesa-dev")
+PySide2 = { version = "5.15.2.1", markers = "sys_platform == 'win32'" }  # QT binding for Windows
+clr-loader = { version = "0.1.7", markers = "sys_platform == 'win32'" }  # .NET binding for Windows
+pythonnet = { version = "3.0.0.a2", markers = "sys_platform == 'win32'" }  # .NET binding for Windows
 pyinstaller = "^5.8.0"
 appdata = "^2.2.0"
 python-slugify = "^8.0.1"
