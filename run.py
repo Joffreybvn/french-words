@@ -1,7 +1,7 @@
 import sys
 import threading
-import subprocess
 import webview
+from flask_migrate import upgrade
 from app import app
 
 
@@ -10,7 +10,8 @@ def start_server():
 
 
 if __name__ == "__main__":
-    subprocess.run(["flask", "db", "upgrade"])
+    with app.app_context():
+        upgrade(directory="./migrations")
 
     thread = threading.Thread(target=start_server)
     thread.daemon = True
